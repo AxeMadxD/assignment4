@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Task 3 of Assignment 4: the caf&eacute; table reservation form rebuilt with Bootstrap, with connected labels, correct input types and keyboard support.">
+    <title>Task 3. Reserve a table</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main class="qr-page">
+        <div class="container">
+            <a class="qr-back" href="index.html">&larr; All three tasks</a>
+
+            <div class="qr-card">
+                <header class="qr-card__head">
+                    <h1>Reserve a table</h1>
+                    <p>Caf&eacute; Dala, Astana. We hold the table for 20 minutes.</p>
+                </header>
+
+                <form class="qr-card__body" action="#" method="get">
+                    <p class="qr-note mb-4">This is the rebuilt form. The old one had no connected labels, no names, duplicate ids, two radio buttons that were not a group, and a <code>div</code> instead of a button, so half of the data never reached the caf&eacute; and nothing worked with the keyboard. The table of problems is in the report.</p>
+
+                    <div class="row g-4">
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="name">Your name *</label>
+                            <input type="text" class="form-control" id="name" name="name" required maxlength="60" autocomplete="name" placeholder="Name Surname">
+                            <div class="invalid-feedback">Tell us who the table is for.</div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="email">Email *</label>
+                            <input type="email" class="form-control" id="email" name="email" required autocomplete="email" placeholder="name@example.com">
+                            <div class="form-text">We send the confirmation here.</div>
+                            <div class="invalid-feedback">This is not a complete email address.</div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="phone">Phone *</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" required maxlength="20" inputmode="tel" autocomplete="tel" placeholder="+7 701 234 56 78">
+                            <div class="invalid-feedback">We call if the table becomes free earlier.</div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="guests">Guests *</label>
+                            <input type="number" class="form-control" id="guests" name="guests" required min="1" max="10" step="1" inputmode="numeric" placeholder="2">
+                            <div class="form-text">From 1 to 10. For a bigger group please call us.</div>
+                            <div class="invalid-feedback">A whole number of guests, from 1 to 10.</div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="date">Date *</label>
+                            <input type="date" class="form-control" id="date" name="date" required min="2026-10-18" max="2026-12-31">
+                            <div class="form-text">We take reservations until the end of the year.</div>
+                            <div class="invalid-feedback">Choose a date between today and 31 December 2026.</div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="service">Service *</label>
+                            <select class="form-select" id="service" name="service" required>
+                                <option value="" selected disabled>Choose&hellip;</option>
+                                <option value="lunch">Lunch, 12:00&ndash;16:00</option>
+                                <option value="dinner">Dinner, 18:00&ndash;23:00</option>
+                            </select>
+                            <div class="invalid-feedback">Lunch or dinner?</div>
+                        </div>
+
+                        <div class="col-12">
+                            <fieldset class="qr-fieldset">
+                                <legend class="qr-legend">Seating *</legend>
+                                <div class="d-flex flex-wrap gap-3 gap-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="seating" id="seating-inside" value="inside" required>
+                                        <label class="form-check-label" for="seating-inside">Inside</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="seating" id="seating-terrace" value="terrace" required>
+                                        <label class="form-check-label" for="seating-terrace">Terrace</label>
+                                    </div>
+                                </div>
+                                <div class="invalid-feedback">Inside or on the terrace?</div>
+                            </fieldset>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label" for="comments">Comments</label>
+                            <textarea class="form-control" id="comments" name="comments" rows="3" maxlength="300" placeholder="A birthday, a high chair, an allergy"></textarea>
+                            <div class="form-text">Optional, up to 300 characters.</div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="terms" name="terms" value="yes" required>
+                                <label class="form-check-label" for="terms">I agree to the terms of reservation *</label>
+                                <div class="invalid-feedback">We need this to hold the table.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="qr-actions d-flex flex-column flex-sm-row justify-content-sm-end gap-3 mt-5">
+                        <button type="reset" class="btn qr-btn qr-btn--ghost order-2 order-sm-1">Clear</button>
+                        <button type="submit" class="btn qr-btn qr-btn--primary order-1 order-sm-2">Reserve</button>
+                    </div>
+                </form>
+            </div>
+
+            <p class="qr-foot text-center mt-4 mb-0">Assignment 4, Task 3. Akhmad Zhagiparov, IT-2510.</p>
+        </div>
+    </main>
+</body>
+</html>
