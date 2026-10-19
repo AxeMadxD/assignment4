@@ -117,6 +117,14 @@ body {
     color: var(--muted);
 }
 
+.form-floating > .form-control:not(:placeholder-shown) ~ label::after {
+    background-color: var(--field);
+}
+
+.form-floating > .form-control:focus ~ label::after {
+    background-color: #fff;
+}
+
 .form-text {
     color: var(--muted);
     font-size: 0.85rem;
